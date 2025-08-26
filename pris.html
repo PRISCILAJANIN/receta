@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Receta de pastel de zanahoria fácil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #333;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #e0e0e0;
+      margin: 5px 0;
+      padding: 8px;
+      border-radius: 4px;
+    }
+    input, button {
+      margin-top: 10px;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Receta de pastel de zanahoria fácil</h1>
+
+  <ul id="listaNombres"></ul>
+
+  <input type="text" id="nombreInput" placeholder="Escribe un ingrediente" />
+  <button onclick="agregarNombre()">Agregar</button>
+  <br><br>
+  <button onclick="mostrarVentanaEmergente()">Mostrar todos </button>
+
+  <script>
+    // Arreglo con más nombres iniciales
+    let nombres = ["3 zanahorias medianas ralladas", "3 huevos", "1 taza de azúcar", "1 taza de aceite vegetal", "2 tazas de harina de trigo", "1 cucharadita de polvo para hornear", "1 cucharadita de canela en polvo", "1 pizca de sal"];
+
+    // Mostrar nombres en la lista
+    function mostrarNombres() {
+      const lista = document.getElementById("listaNombres");
+      lista.innerHTML = "";
+
+      for (let i = 0; i < nombres.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = nombres[i];
+        lista.appendChild(li);
+      }
+    }
+
+    // Agregar un nuevo nombre
+    function agregarNombre() {
+      const input = document.getElementById("nombreInput");
+      const nuevoNombre = input.value.trim();
+
+      if (nuevoNombre !== "") {
+        nombres.push(nuevoNombre);
+        input.value = "";
+        mostrarNombres();
+      } else {
+        alert("Por favor, escribe un ingrediente.");
+      }
+    }
+
+    // Ventana emergente con todos los nombres
+    function mostrarVentanaEmergente() {
+      if (nombres.length > 0) {
+        const listaNombres = nombres.join(", ");
+        alert("Nombres actuales:\n\n" + listaNombres);
+      } else {
+        alert("La lista está vacía.");
+      }
+    }
+
+    // Mostrar lista al cargar
+    mostrarNombres();
+  </script>
+
+</body>
+</html>
